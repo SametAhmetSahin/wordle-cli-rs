@@ -19,4 +19,4 @@ The words list can be modified by changing the words file.
 Just run `cargo build --release && cargo run --release`.
 
 ## Known Bugs & Issues
-As the code currently colors a character yellow if that character exists in the randomly selected word, in a guess with one single letter used multiple times while the letter exists only once in the random word, the remaining letters would color yellow even though they don't exist. I might address this issue later.
+None as far as I know.

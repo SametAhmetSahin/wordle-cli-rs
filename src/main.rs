@@ -27,6 +27,7 @@ fn main() {
 
     //println!("randword is {randword}");
 
+   
     let randwordletters: Vec<char> = randword.chars().collect();
 
 
@@ -56,11 +57,28 @@ fn main() {
 
             for i in 0..5 {
                 if guessletters.get(i) != randwordletters.get(i) {
+                    
                     if let Some(ithletter) = guessletters.get(i) {
 
+                    
                     if randwordletters.contains(ithletter) {
-                    print!("{} ", ithletter.to_string().yellow());
+                    
                     correct = false;
+                    let mut tempvector = randwordletters.clone();
+                    
+                    // I have to write a simple find loop here as I am not aware of any find function in Rust's Vector implementation
+                    for i in 0..tempvector.len() {
+                        if Some(ithletter) == tempvector.get(i) {
+                            tempvector.remove(i);
+                            break;
+                        }
+                    }
+                    if tempvector.contains(ithletter) {
+                        print!("{} ", ithletter.to_string().yellow());
+                    }
+                    else {
+                        print!("{} ", ithletter.to_string().red());
+                    }
                     continue;
                     }
                     print!("{} ", ithletter.to_string().red());
@@ -99,6 +117,7 @@ fn main() {
             println!("You need to input a word with 5 letters.");
         }
     }
+    println!("\nThe word was {randword}!\n");
 }
 
 fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
